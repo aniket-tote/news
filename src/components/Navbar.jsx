@@ -13,7 +13,6 @@ export default function Navbar() {
             <div className="navigation flex flex-col">
                 <div className="heading w-full flex justify-start px-4 py-2 bg-slate-300 items-center cursor-pointer">
                 <span className="heading text-2xl text-slate-900 font-semibold ">Categories</span>
-                <IconButton /> 
                 <BiDownArrowAlt className="text-slate-900 mx-2 w-6 h-6 hidden"/>
                 <BiUpArrowAlt className="text-slate-900 mx-2 w-6 h-6 inline"/>
                 </div>
