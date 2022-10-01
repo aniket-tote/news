@@ -13,7 +13,7 @@ export default function Navbar() {
       display={["none","none","flex"]}
       backgroundColor={colorMode === "dark" ? "gray.800" : "gray.50"}
     >
-      <Flex className="space-x-2 items-center">
+      <Flex justifyContent={"center"} display={["inline", "inline", "none"]}>
         <Flex
           className="languageToggle rounded-md p-1"
           backgroundColor={colorMode === "dark" ? "gray.700" : "gray.200"}
