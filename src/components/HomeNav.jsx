@@ -53,7 +53,7 @@ export default function HomeNav() {
         <Text className="logoname text-xl" display={["none", "none", "inline"]}>Inshorts Clone</Text>
       </Flex>
 
-      <Flex>
+      <Flex className="space-x-3">
         <Text
           className="CategoryHeading text-2xl font-semibold"
           display={["none", "none", "inline"]}
