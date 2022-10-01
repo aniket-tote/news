@@ -1,13 +1,19 @@
-import './App.css';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
+import { Flex } from '@chakra-ui/react'
+import React from "react";
+import "./App.css";
+import HomeNav from "./components/HomeNav";
+import Navbar from "./components/Navbar";
+import NewsSection from "./components/NewsSection";
 
 function App() {
   return (
-    <div className="App w-screen h-screen bg-slate-200 flex">
-      <Navbar/>
-      <Home/>
-    </div>
+    <Flex width={["full"]} flexDirection={"column"} className="App">
+      <HomeNav />
+      <Flex width={"full"} height={"full"}>
+        <Navbar />
+        <NewsSection />
+      </Flex>
+    </Flex>
   );
 }
 
