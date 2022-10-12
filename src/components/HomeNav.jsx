@@ -7,9 +7,13 @@ import {
   Text,
   Image,
 } from "@chakra-ui/react";
+
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 export default function HomeNav() {
   const { colorMode, toggleColorMode } = useColorMode();
+  const toggleNavbar = () =>{
+    
+  }
   return (
     <Flex
       width={"full"}
@@ -32,6 +36,7 @@ export default function HomeNav() {
           id="hamburger"
           className="cursor-pointer space-y-1"
           display={["inline", "inline", "none"]}
+          onClick = {toggleNavbar}
         >
           <Box
             height={"0.15rem"}
