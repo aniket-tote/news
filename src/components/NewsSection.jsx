@@ -5,7 +5,7 @@ export default function NewsSection() {
   const { colorMode } = useColorMode();
   return (
     <Flex
-      width={"auto"}
+      width={"90%"}
       className="z-[-1] space-x-5 space-y-5"
       justifyContent={"center"}
       backgroundColor={colorMode === "dark" ? "gray.900" : "white"}

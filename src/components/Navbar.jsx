@@ -7,10 +7,10 @@ export default function Navbar() {
   const { colorMode } = useColorMode();
   return (
     <Flex
-      width={["0%","0%","max-content","max-content"]}
+      width={"20%"}
       flexDirection={"column"}
       className="navbar shadow"
-      display={["none","none","flex"]}
+      display={["flex"]}
       backgroundColor={colorMode === "dark" ? "gray.800" : "gray.50"}
     >
       <Flex justifyContent={"center"} display={["inline", "inline", "none"]}>
