@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text } from "@chakra-ui/react";
 import { BiDownArrowAlt, BiUpArrowAlt } from "react-icons/bi";
 import { Flex, Box, useColorMode } from "@chakra-ui/react";
 
 export default function Navbar() {
   const { colorMode } = useColorMode();
+  const [showcategory, toggleshowcategory] = useState(true);
+  const toggleshowcategorymode = () => {
+    if (showcategory === true) {
+      toggleshowcategory(false);
+    } else {
+      toggleshowcategory(true);
+    }
+  };
   return (
-    <Flex
+    <Box
       width={"20%"}
-      flexDirection={"column"}
-      className="navbar shadow"
-      display={["flex"]}
+      className="navbar shadow absolute hidden right-full md:right-0 md:flex flex-col md:relative"
       backgroundColor={colorMode === "dark" ? "gray.800" : "gray.50"}
     >
       <Flex justifyContent={"center"} display={["inline", "inline", "none"]}>
@@ -33,9 +39,23 @@ export default function Navbar() {
         </Flex>
       </Flex>
       <Flex className="heading justify-start px-4 py-2 items-center cursor-pointer">
-        <Text className="heading text-2xl font-semibold ">Categories</Text>
-        <BiDownArrowAlt className="mx-2 w-6 h-6 hidden" />
-        <BiUpArrowAlt className="mx-2 w-6 h-6 inline" />
+        <Text
+          className="heading text-2xl font-semibold"
+          onClick={toggleshowcategorymode}
+        >
+          Categories
+        </Text>
+        <BiDownArrowAlt
+          className="mx-2 w-6 h-6"
+          onClick={toggleshowcategorymode}
+          // display={showcategory ? "none" : "inline"}
+          display={"none"}
+        />
+        <BiUpArrowAlt
+          className="mx-2 w-6 h-6"
+          onClick={toggleshowcategorymode}
+          // display={showcategory ? "inline" : "none"}
+        />
       </Flex>
       <Flex className="categories" flexDirection={"column"}>
         <Flex
@@ -159,6 +179,6 @@ export default function Navbar() {
           <span>Entertainment</span>
         </Flex>
       </Flex>
-    </Flex>
+    </Box>
   );
 }
