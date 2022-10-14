@@ -5,23 +5,14 @@ export default function NewsSection() {
   const { colorMode } = useColorMode();
   return (
     <Flex
-      width={["100%","100%","90%"]}
-      className="z-[-1] space-x-5 space-y-5"
+      width={["100%","100%","85%"]}
+      className="space-x-5 space-y-5 p-2"
       justifyContent={"center"}
       backgroundColor={colorMode === "dark" ? "gray.900" : "white"}
       flexWrap={"wrap"}
     >
       <Flex
-        className="newsItem1 w-[95%] md:w-[46%] h-max ml-5 mt-5 rounded-lg p-5 shadow-lg"
-        backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
-      >
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum numquam
-        deleniti libero tenetur ea sint tempora ipsum vero eveniet laborum sed
-        quo nisi aliquam animi, natus praesentium, eius recusandae doloremque
-        veniam dolorem accusantium reiciendis.
-      </Flex>
-      <Flex
-        className="newsItem2 w-[95%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem1 w-[92%] md:w-[46%] h-max rounded-lg mt-5 ml-5 p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -30,7 +21,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem3 w-[95%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem2 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -39,7 +30,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem4 w-[95%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem3 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -48,7 +39,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem5 w-[95%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem4 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -57,7 +48,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem6 w-[95%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem5 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -66,7 +57,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem7 w-[95%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem6 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -75,7 +66,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem8 w-[95%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem7 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -84,7 +75,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem9 w-[95%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem8 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -93,7 +84,16 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem1 w-[95%] md:w-[46%] h-max0 rounded-lg p-5 shadow-lg"
+        className="newsItem9 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
+      >
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
+        ipsam. Deleniti voluptatem facere omnis fugit incidunt inventore saepe
+        nulla, dolorum esse magni beatae at autem excepturi quidem odit laborum
+        nisi? Tenetur, perspiciatis corrupti.
+      </Flex>
+      <Flex
+        className="newsItem1 w-[92%] md:w-[46%] h-max0 rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem

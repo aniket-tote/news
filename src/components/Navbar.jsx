@@ -15,7 +15,7 @@ export default function Navbar() {
   };
   return (
     <Box
-      width={"20%"}
+      width={"15%"}
       className="navbar shadow absolute hidden right-full md:right-0 md:flex flex-col md:relative"
       backgroundColor={colorMode === "dark" ? "gray.800" : "gray.50"}
     >
