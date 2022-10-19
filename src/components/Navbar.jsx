@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text } from "@chakra-ui/react";
-import { BiDownArrowAlt, BiUpArrowAlt } from "react-icons/bi";
 import { Flex, Box, useColorMode } from "@chakra-ui/react";
+import { ChevronClose } from "react-icons-animated";
 
 export default function Navbar() {
   const { colorMode } = useColorMode();
+  const [isClosed, setIsClosed] = useState(false);
   return (
     <Flex
-      width={["0%","0%","max-content","max-content"]}
+      width={"15%"}
+      minWidth={"max-content"}
       flexDirection={"column"}
       className="navbar shadow"
-      display={["none","none","flex"]}
+      display={["none", "none", "flex"]}
       backgroundColor={colorMode === "dark" ? "gray.800" : "gray.50"}
     >
       <Flex justifyContent={"center"} display={["inline", "inline", "none"]}>
@@ -32,20 +34,416 @@ export default function Navbar() {
           </Box>
         </Flex>
       </Flex>
-      <Flex className="heading justify-start px-4 py-2 items-center cursor-pointer">
+      <Flex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        className="heading justify-start px-4 py-2 items-center cursor-pointer space-x-2"
+        onClick={() => setIsClosed(!isClosed)}
+      >
         <Text className="heading text-2xl font-semibold ">Categories</Text>
-        <BiDownArrowAlt className="mx-2 w-6 h-6 hidden" />
-        <BiUpArrowAlt className="mx-2 w-6 h-6 inline" />
+        <ChevronClose isClosed={isClosed}/>
       </Flex>
-      <Flex className="categories" flexDirection={"column"}>
+      <Box className="categories flex overflow-hidden" flexDirection={"column"} height = {isClosed ? "max-content" : "0px"}>
         <Flex
           justifyContent={"start"}
           _hover={{
             backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
           }}
           padding={"0.5rem 1rem"}
-          className="category1 rounded mx-2"
-        >
+          className="category1 rounded mx-2">
           <span>All News</span>
         </Flex>
         <Flex
@@ -54,8 +452,7 @@ export default function Navbar() {
             backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
           }}
           padding={"0.5rem 1rem"}
-          className="category2 rounded mx-2"
-        >
+          className="category2 rounded mx-2">
           <span>India</span>
         </Flex>
         <Flex
@@ -158,7 +555,7 @@ export default function Navbar() {
         >
           <span>Entertainment</span>
         </Flex>
-      </Flex>
+      </Box>
     </Flex>
   );
 }

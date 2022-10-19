@@ -3,9 +3,10 @@ import { Flex, useColorMode } from "@chakra-ui/react";
 
 export default function NewsSection() {
   const { colorMode } = useColorMode();
+  // fetch()
   return (
     <Flex
-      width={"auto"}
+      width={["100%","100%","85%"]}
       className="z-[-1] space-x-5 space-y-5"
       justifyContent={"center"}
       backgroundColor={colorMode === "dark" ? "gray.900" : "white"}
@@ -15,10 +16,10 @@ export default function NewsSection() {
         className="newsItem1 w-4/5 md:w-[45%] h-max ml-5 mt-5 rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum numquam
-        deleniti libero tenetur ea sint tempora ipsum vero eveniet laborum sed
-        quo nisi aliquam animi, natus praesentium, eius recusandae doloremque
-        veniam dolorem accusantium reiciendis.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
+        ipsam. Deleniti voluptatem facere omnis fugit incidunt inventore saepe
+        nulla, dolorum esse magni beatae at autem excepturi quidem odit laborum
+        nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
         className="newsItem2 w-4/5 md:w-[45%] h-max rounded-lg p-5 shadow-lg"
