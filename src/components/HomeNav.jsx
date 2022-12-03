@@ -70,24 +70,6 @@ export default function HomeNav() {
       </Flex>
 
       <Flex className="space-x-2 items-center">
-        <Flex
-          className="languageToggle rounded-md p-1"
-          display={["none", "none", "flex"]}
-          backgroundColor={colorMode === "dark" ? "gray.700" : "gray.200"}
-        >
-          <Box
-            className="english px-2 py-1 rounded"
-            backgroundColor={colorMode === "dark" ? "gray.600" : "gray.300"}
-          >
-            <Text>English</Text>
-          </Box>
-          <Box
-            className="hindi px-2 py-1"
-            backgroundColor={colorMode === "dark" ? "gray.700" : "gray.200"}
-          >
-            <Text>Hindi</Text>
-          </Box>
-        </Flex>
         <IconButton
           onClick={toggleColorMode}
           icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
