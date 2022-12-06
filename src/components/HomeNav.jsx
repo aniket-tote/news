@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Flex,
   IconButton,
@@ -11,9 +11,27 @@ import {
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 export default function HomeNav() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const toggleNavbar = () =>{
-    
-  }
+  const [hamstyle1, togglehamstyle1] = useState("w-full rounded");
+  const [hamstyle2, togglehamstyle2] = useState("w-full rounded");
+  const [hamstyle3, togglehamstyle3] = useState("w-full rounded");
+  let isnavopen = false;
+  const toggleNavbar = () => {
+    if (isnavopen) {
+      togglehamstyle1("w-full rounded transition-all duration-500 ease-in-out");
+      togglehamstyle2("w-full rounded transition-all duration-500 ease-in-out");
+      togglehamstyle3("w-full rounded transition-all duration-500 ease-in-out");
+      isnavopen = false;
+    } else {
+      togglehamstyle1(
+        "w-full rounded rotate-45 translate-y-[6px] transition-all duration-500 ease-in-out"
+      );
+      togglehamstyle2("w-full rounded opacity-0");
+      togglehamstyle3(
+        "w-full rounded -rotate-45 translate-y-[-6px] transition-all duration-500 ease-in-out"
+      );
+      isnavopen = true;
+    }
+  };
   return (
     <Flex
       width={"full"}
@@ -36,26 +54,34 @@ export default function HomeNav() {
           id="hamburger"
           className="cursor-pointer space-y-1"
           display={["inline", "inline", "none"]}
-          onClick = {toggleNavbar}
+          onClick={toggleNavbar}
         >
           <Box
             height={"0.15rem"}
-            className="ham1 w-full rounded"
+            className={hamstyle1}
+            transform={""}
             backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
           ></Box>
           <Box
             height={"0.15rem"}
-            className="ham2 w-full rounded"
+            className={hamstyle2}
             backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
           ></Box>
           <Box
             height={"0.15rem"}
-            className="ham3 w-full rounded"
+            className={hamstyle3}
             backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
           ></Box>
         </Flex>
-        <Image src="../favicon.ico" alt="logo" className="h-7 w-7" display={["none", "none", "inline"]} />
-        <Text className="logoname text-xl" display={["none", "none", "inline"]}>Inshorts Clone</Text>
+        <Image
+          src="../favicon.ico"
+          alt="logo"
+          className="h-7 w-7"
+          display={["none", "none", "inline"]}
+        />
+        <Text className="logoname text-xl" display={["none", "none", "inline"]}>
+          Inshorts Clone
+        </Text>
       </Flex>
 
       <Flex className="space-x-3">
@@ -65,8 +91,18 @@ export default function HomeNav() {
         >
           All News
         </Text>
-        <Image src="../favicon.ico" alt="logo" className="h-7 w-7" display={["inline", "inline", "none"]}/>
-        <Text className="logoname text-xl" display={["inline", "inline", "none"]}>Inshorts Clone</Text>
+        <Image
+          src="../favicon.ico"
+          alt="logo"
+          className="h-7 w-7"
+          display={["inline", "inline", "none"]}
+        />
+        <Text
+          className="logoname text-xl"
+          display={["inline", "inline", "none"]}
+        >
+          Inshorts Clone
+        </Text>
       </Flex>
 
       <Flex className="space-x-2 items-center">

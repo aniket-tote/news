@@ -13,8 +13,7 @@ export default function Navbar() {
       width={"15%"}
       minWidth={"max-content"}
       flexDirection={"column"}
-      className="navbar shadow space-y-4 pt-3"
-      display={["none", "none", "flex"]}
+      className="navbar shadow space-y-4 pt-3 absolute right-full md:relative md:right-0"
       backgroundColor={colorMode === "dark" ? "gray.800" : "gray.50"}
     >
       <Flex justifyContent={"center"}>
@@ -29,7 +28,6 @@ export default function Navbar() {
           </Box>
           <Box
             className="hindi px-2 py-1 hover:cursor-pointer"
-            
           >
             <Text>Hindi</Text>
           </Box>

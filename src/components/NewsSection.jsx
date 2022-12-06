@@ -3,17 +3,16 @@ import { Flex, useColorMode } from "@chakra-ui/react";
 
 export default function NewsSection() {
   const { colorMode } = useColorMode();
-  // fetch()
   return (
     <Flex
       width={["100%","100%","85%"]}
-      className="z-[-1] space-x-5 space-y-5"
+      className="z-[-1] space-y-5 md:space-x-5"
       justifyContent={"center"}
       backgroundColor={colorMode === "dark" ? "gray.900" : "white"}
       flexWrap={"wrap"}
     >
       <Flex
-        className="newsItem1 w-[92%] md:w-[46%] h-max rounded-lg mt-5 ml-5 p-5 shadow-lg"
+        className="newsItem1 max-w-[90%] md:max-w-[45%] h-max rounded-lg p-5 mt-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -22,7 +21,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem2 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem2 max-w-[90%] md:max-w-[45%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -31,7 +30,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem3 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem3 max-w-[90%] md:max-w-[45%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -40,7 +39,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem4 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem4 max-w-[90%] md:max-w-[45%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -49,7 +48,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem5 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem5 max-w-[90%] md:max-w-[45%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -58,7 +57,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem6 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem6 max-w-[90%] md:max-w-[45%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -67,7 +66,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem7 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem7 max-w-[90%] md:max-w-[45%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -76,7 +75,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem8 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem8 max-w-[90%] md:max-w-[45%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -85,7 +84,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem9 w-[92%] md:w-[46%] h-max rounded-lg p-5 shadow-lg"
+        className="newsItem9 max-w-[90%] md:max-w-[45%] h-max rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
@@ -94,7 +93,7 @@ export default function NewsSection() {
         nisi? Tenetur, perspiciatis corrupti.
       </Flex>
       <Flex
-        className="newsItem1 w-[92%] md:w-[46%] h-max0 rounded-lg p-5 shadow-lg"
+        className="newsItem1 max-w-[90%] md:max-w-[45%] h-max0 rounded-lg p-5 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
