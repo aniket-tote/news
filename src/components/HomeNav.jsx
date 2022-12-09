@@ -11,26 +11,9 @@ import {
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 export default function HomeNav() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const [hamstyle1, togglehamstyle1] = useState("w-full rounded");
-  const [hamstyle2, togglehamstyle2] = useState("w-full rounded");
-  const [hamstyle3, togglehamstyle3] = useState("w-full rounded");
-  let isnavopen = false;
+  const [isnavopen, togglenav] = useState(false);
   const toggleNavbar = () => {
-    if (isnavopen) {
-      togglehamstyle1("w-full rounded transition-all duration-500 ease-in-out");
-      togglehamstyle2("w-full rounded transition-all duration-500 ease-in-out");
-      togglehamstyle3("w-full rounded transition-all duration-500 ease-in-out");
-      isnavopen = false;
-    } else {
-      togglehamstyle1(
-        "w-full rounded rotate-45 translate-y-[6px] transition-all duration-500 ease-in-out"
-      );
-      togglehamstyle2("w-full rounded opacity-0");
-      togglehamstyle3(
-        "w-full rounded -rotate-45 translate-y-[-6px] transition-all duration-500 ease-in-out"
-      );
-      isnavopen = true;
-    }
+    togglenav(!isnavopen);
   };
   return (
     <Flex
@@ -58,18 +41,29 @@ export default function HomeNav() {
         >
           <Box
             height={"0.15rem"}
-            className={hamstyle1}
-            transform={""}
+            className={
+              isnavopen
+                ? "w-full rounded rotate-45 translate-y-[6px] transition-all duration-500 ease-in-out"
+                : "w-full rounded transition-all duration-500 ease-in-out"
+            }
             backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
           ></Box>
           <Box
             height={"0.15rem"}
-            className={hamstyle2}
+            className={
+              isnavopen
+                ? "w-full rounded opacity-0"
+                : "w-full rounded transition-all duration-500 ease-in-out"
+            }
             backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
           ></Box>
           <Box
             height={"0.15rem"}
-            className={hamstyle3}
+            className={
+              isnavopen
+                ? "w-full rounded -rotate-45 translate-y-[-6px] transition-all duration-500 ease-in-out"
+                : "w-full rounded transition-all duration-500 ease-in-out"
+            }
             backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
           ></Box>
         </Flex>

@@ -11,45 +11,20 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import Navbar from "./components/Navbar";
+import HomeNav from "./components/HomeNav";
 
 function App() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const [hamstyle1, togglehamstyle1] = useState("w-full rounded");
-  const [hamstyle2, togglehamstyle2] = useState("w-full rounded");
-  const [hamstyle3, togglehamstyle3] = useState("w-full rounded");
-  const [navstyle, togglenavstyle] = useState(
-    "navbar shadow space-y-4 pt-3 absolute right-full md:relative md:right-0"
-  );
-  const [isClosed, setIsClosed] = useState(false);
+  const [isnavopen, togglenav] = useState(false);
+  const [isClosed, setIsClosed] = useState(true);
   const [language, toggleLanguage] = useState(false);
-  let isnavopen = false;
   const toggleNavbar = () => {
-    if (isnavopen) {
-      togglehamstyle1("w-full rounded transition-all duration-500 ease-in-out");
-      togglehamstyle2("w-full rounded transition-all duration-500 ease-in-out");
-      togglehamstyle3("w-full rounded transition-all duration-500 ease-in-out");
-      togglenavstyle(
-        "navbar shadow space-y-4 pt-3 absolute right-full md:relative md:right-0"
-      );
-      isnavopen = false;
-    } else {
-      togglehamstyle1(
-        "w-full rounded rotate-45 translate-y-[6px] transition-all duration-500 ease-in-out"
-      );
-      togglehamstyle2("w-full rounded opacity-0");
-      togglehamstyle3(
-        "w-full rounded -rotate-45 translate-y-[-6px] transition-all duration-500 ease-in-out"
-      );
-
-      togglenavstyle(
-        "navbar shadow space-y-4 pt-3 relative right-0 md:relative md:right-0  transition-all duration-500 ease-in-out"
-      );
-      isnavopen = true;
-    }
+    togglenav(!isnavopen);
   };
   return (
     <Flex width={["full"]} flexDirection={"column"} className="App">
-      <Flex
+      {/* <Flex
         width={"full"}
         height={"4rem"}
         justifyContent={"space-between"}
@@ -74,18 +49,27 @@ function App() {
           >
             <Box
               height={"0.15rem"}
-              className={hamstyle1}
-              transform={""}
+              className={
+                isnavopen
+                  ? "w-full rounded rotate-45 translate-y-[6px] transition-all duration-500 ease-in-out"
+                  : "w-full rounded transition-all duration-500 ease-in-out"
+              }
               backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
             ></Box>
             <Box
               height={"0.15rem"}
-              className={hamstyle2}
+              className={
+                isnavopen
+                  ? "w-full rounded opacity-0"
+                  : "w-full rounded transition-all duration-500 ease-in-out"
+              }
               backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
             ></Box>
             <Box
               height={"0.15rem"}
-              className={hamstyle3}
+              className={isnavopen
+                ? "w-full rounded -rotate-45 translate-y-[-6px] transition-all duration-500 ease-in-out"
+                : "w-full rounded transition-all duration-500 ease-in-out"}
               backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
             ></Box>
           </Flex>
@@ -130,13 +114,14 @@ function App() {
             icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
           />
         </Flex>
-      </Flex>
+      </Flex> */}
+      <HomeNav/>
       <Flex width={"full"} height={"full"}>
         <Flex
           width={"15%"}
           minWidth={"max-content"}
           flexDirection={"column"}
-          className={navstyle}
+          className={isnavopen ? "navbar shadow space-y-4 pt-3 h-full md:right-0 md:relative right-auto absolute z-auto  transition-all duration-500 ease-in-out":"navbar h-full shadow space-y-4 pt-3 absolute right-full md:relative md:right-0 transition-all duration-500 ease-in-out"}
           backgroundColor={colorMode === "dark" ? "gray.800" : "gray.50"}
         >
           <Flex justifyContent={"center"}>

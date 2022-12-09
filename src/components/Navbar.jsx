@@ -1,39 +1,42 @@
 import React, { useState } from "react";
 import { Text } from "@chakra-ui/react";
 import { Flex, Box, useColorMode } from "@chakra-ui/react";
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 export default function Navbar() {
   const { colorMode } = useColorMode();
   const [isClosed, setIsClosed] = useState(false);
-  const [ language , toggleLanguage] = useState(false)
-
+  const [language, toggleLanguage] = useState(false);
+  const [isnavopen, togglenav] = useState(false);
   return (
     <Flex
       width={"15%"}
       minWidth={"max-content"}
       flexDirection={"column"}
-      className="navbar shadow space-y-4 pt-3 absolute right-full md:relative md:right-0"
+      className={
+        isnavopen
+          ? "navbar shadow space-y-4 pt-3 h-full md:right-0 md:relative right-auto absolute z-auto  transition-all duration-500 ease-in-out"
+          : "navbar h-full shadow space-y-4 pt-3 absolute right-full md:relative md:right-0 transition-all duration-500 ease-in-out"
+      }
       backgroundColor={colorMode === "dark" ? "gray.800" : "gray.50"}
     >
       <Flex justifyContent={"center"}>
         <Flex
           className="languageToggle rounded-md p-1 z-0 w-[8.5rem]"
           backgroundColor={colorMode === "dark" ? "gray.700" : "gray.200"}
-          onClick={() => toggleLanguage(!language)}>
-          <Box
-            className="english px-2 py-1 rounded cursor-pointer"
-          >
+          onClick={() => toggleLanguage(!language)}
+        >
+          <Box className="english px-2 py-1 rounded cursor-pointer">
             <Text>English</Text>
           </Box>
-          <Box
-            className="hindi px-2 py-1 hover:cursor-pointer"
-          >
+          <Box className="hindi px-2 py-1 hover:cursor-pointer">
             <Text>Hindi</Text>
           </Box>
-          <Box className="background absolute w-16 h-8 rounded z-[-1]" 
+          <Box
+            className="background absolute w-16 h-8 rounded z-[-1]"
             backgroundColor={colorMode === "dark" ? "gray.600" : "gray.300"}
-            marginLeft={language ? "4rem" : "0rem"}></Box>
+            marginLeft={language ? "4rem" : "0rem"}
+          ></Box>
         </Flex>
       </Flex>
       <Flex
@@ -42,10 +45,10 @@ export default function Navbar() {
       >
         <Text className="heading text-2xl font-semibold ">Categories</Text>
         <Box className="uparrow" display={isClosed ? "none" : "inline"}>
-        <IoIosArrowDown className="w-7 h-7"/>
+          <IoIosArrowDown className="w-7 h-7" />
         </Box>
         <Box className="downarrow" display={isClosed ? "inline" : "none"}>
-        <IoIosArrowUp className="w-7 h-7"/>
+          <IoIosArrowUp className="w-7 h-7" />
         </Box>
       </Flex>
       <Box
