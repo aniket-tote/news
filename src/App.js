@@ -24,7 +24,7 @@ function App() {
   };
   return (
     <Flex width={["full"]} flexDirection={"column"} className="App">
-      {/* <Flex
+      <Flex
         width={"full"}
         height={"4rem"}
         justifyContent={"space-between"}
@@ -114,8 +114,7 @@ function App() {
             icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
           />
         </Flex>
-      </Flex> */}
-      <HomeNav/>
+      </Flex>
       <Flex width={"full"} height={"full"}>
         <Flex
           width={"15%"}
