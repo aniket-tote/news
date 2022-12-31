@@ -11,14 +11,14 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import Navbar from "./components/Navbar";
-import HomeNav from "./components/HomeNav";
+// import Navbar from "./components/Navbar";
+// import HomeNav from "./components/HomeNav";
 
 function App() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const [isnavopen, togglenav] = useState(false);
-  const [isClosed, setIsClosed] = useState(true);
   const [language, toggleLanguage] = useState(false);
+  const [isnavopen, togglenav] = useState(false);
+  const [categoryisClosed, setcategoryIsClosed] = useState(true);
   const toggleNavbar = () => {
     togglenav(!isnavopen);
   };
@@ -144,20 +144,20 @@ function App() {
           </Flex>
           <Flex
             className="heading justify-start px-4 py-2 items-center cursor-pointer space-x-2"
-            onClick={() => setIsClosed(!isClosed)}
+            onClick={() => setcategoryIsClosed(!categoryisClosed)}
           >
             <Text className="heading text-2xl font-semibold ">Categories</Text>
-            <Box className="uparrow" display={isClosed ? "none" : "inline"}>
+            <Box className="uparrow" display={categoryisClosed ? "none" : "inline"}>
               <IoIosArrowDown className="w-7 h-7" />
             </Box>
-            <Box className="downarrow" display={isClosed ? "inline" : "none"}>
+            <Box className="downarrow" display={categoryisClosed ? "inline" : "none"}>
               <IoIosArrowUp className="w-7 h-7" />
             </Box>
           </Flex>
           <Box
-            className="categories flex overflow-hidden"
+            className="categories flex overflow-hidden transition-all delay-500 ease-in-out"
             flexDirection={"column"}
-            height={isClosed ? "max-content" : "0px"}
+            height={categoryisClosed ? "max-content" : "0px"}
           >
             <Flex
               justifyContent={"start"}
