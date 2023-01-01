@@ -1,25 +1,55 @@
 import React from "react";
-import { Flex, useColorMode } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
+import NewsItem from "./NewsItem";
+import { Component } from "react";
 
-export default function NewsSection() {
-  const { colorMode } = useColorMode();
-  return (
-    <Flex
-      width={["100%","100%","85%"]}
-      className="z-[-1] space-y-5 md:space-x-5"
-      justifyContent={"center"}
-      backgroundColor={colorMode === "dark" ? "gray.900" : "white"}
-      flexWrap={"wrap"}
-    >
+class NewsSection extends Component {
+  constructor() {
+    super();
+    this.state = {
+      articles: this.articles,
+    };
+  }
+
+  async componentDidMount() {
+    let url =
+      "https://newsapi.org/v2/top-headlines?country=in&apiKey=9beb73b8c5354e63ac440efa04f1415e";
+    let fetcheddata = await fetch(url);
+    let data = await fetcheddata.json();
+    console.log(data);
+    this.setState({
+      articles:data.articles
+    });
+  }
+
+  render() {
+    let { colorMode } = this.props;
+    return (
       <Flex
-        className="newsItem1 max-w-[90%] md:max-w-[45%] h-max rounded-lg p-5 mt-5 shadow-lg"
-        backgroundColor={colorMode === "dark" ? "gray.700" : "gray.100"}
+        width={["100%", "100%", "85%"]}
+        justifyContent={"center"}
+        backgroundColor={colorMode === "dark" ? "gray.900" : "gray.100"}
+        flexWrap={"wrap"}
       >
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, eum
-        ipsam. Deleniti voluptatem facere omnis fugit incidunt inventore saepe
-        nulla, dolorum esse magni beatae at autem excepturi quidem odit laborum
-        nisi? Tenetur, perspiciatis corrupti.
+        {this.state.articles ? 
+        this.state.articles.map((element) => {
+          return (
+            <NewsItem
+              colorMode={this.props.colorMode}
+              key={element.urlToImage}
+              title={element.title}
+              description={element.description}
+              author={element.author}
+              publishedAt={element.publishedAt}
+              url={element.url}
+              urlToImage={element.urlToImage}
+              sourceName={element.source.name}
+            />
+          );
+        }) : console.log("not found")}
       </Flex>
-    </Flex>
-  );
+    );
+  }
 }
+
+export default NewsSection;
