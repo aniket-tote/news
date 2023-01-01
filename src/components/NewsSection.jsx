@@ -18,7 +18,7 @@ class NewsSection extends Component {
     let data = await fetcheddata.json();
     console.log(data);
     this.setState({
-      articles:data.articles
+      articles: data.articles,
     });
   }
 
@@ -31,22 +31,23 @@ class NewsSection extends Component {
         backgroundColor={colorMode === "dark" ? "gray.900" : "gray.100"}
         flexWrap={"wrap"}
       >
-        {this.state.articles ? 
-        this.state.articles.map((element) => {
-          return (
-            <NewsItem
-              colorMode={this.props.colorMode}
-              key={element.urlToImage}
-              title={element.title}
-              description={element.description}
-              author={element.author}
-              publishedAt={element.publishedAt}
-              url={element.url}
-              urlToImage={element.urlToImage}
-              sourceName={element.source.name}
-            />
-          );
-        }) : console.log("not found")}
+        {this.state.articles
+          ? this.state.articles.map((element) => {
+              return (
+                <NewsItem
+                  colorMode={this.props.colorMode}
+                  key={element.urlToImage}
+                  title={element.title}
+                  description={element.description}
+                  author={element.author}
+                  publishedAt={element.publishedAt}
+                  url={element.url}
+                  urlToImage={element.urlToImage}
+                  sourceName={element.source.name}
+                />
+              );
+            })
+          : console.log("not found")}
       </Flex>
     );
   }

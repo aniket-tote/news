@@ -1,124 +1,54 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import "./App.css";
 import NewsSection from "./components/NewsSection";
-import {
-  Flex,
-  IconButton,
-  useColorMode,
-  Box,
-  Text,
-  Image,
-} from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { Flex } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
-// import Navbar from "./components/Navbar";
-// import HomeNav from "./components/HomeNav";
+import HeadNav from "./components/HeadNav";
 
-function App() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const [isnavopen, togglenav] = useState(false);
-  const toggleNavbar = () => {
-    togglenav(!isnavopen);
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      colorMode: "dark",
+      isNavOpen: false,
+    };
+  }
+
+  toggleNavbar = (param) => {
+    this.setState({ isNavOpen: param });
   };
-  return (
-    <Flex width={["full"]} flexDirection={"column"} className="App">
-      <Flex
-        width={"full"}
-        height={"4rem"}
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        padding={"0rem 1rem"}
-        backgroundColor={colorMode === "dark" ? "gray.800" : "white"}
-      >
-        <Flex
-          justifyContent={"center"}
-          justifySelf={"center"}
-          alignItems={"center"}
-          className="logo space-x-3"
-        >
-          <Flex
-            flexDirection={"column"}
-            justifyContent={"center"}
-            width={"1.5rem"}
-            id="hamburger"
-            className="cursor-pointer space-y-1"
-            display={["inline", "inline", "none"]}
-            onClick={toggleNavbar}
-          >
-            <Box
-              height={"0.15rem"}
-              className={
-                isnavopen
-                  ? "w-full rounded rotate-45 translate-y-[6px] transition-all duration-500 ease-in-out"
-                  : "w-full rounded transition-all duration-500 ease-in-out"
-              }
-              backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
-            ></Box>
-            <Box
-              height={"0.15rem"}
-              className={
-                isnavopen
-                  ? "w-full rounded opacity-0"
-                  : "w-full rounded transition-all duration-500 ease-in-out"
-              }
-              backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
-            ></Box>
-            <Box
-              height={"0.15rem"}
-              className={
-                isnavopen
-                  ? "w-full rounded -rotate-45 translate-y-[-6px] transition-all duration-500 ease-in-out"
-                  : "w-full rounded transition-all duration-500 ease-in-out"
-              }
-              backgroundColor={colorMode === "dark" ? "gray.50" : "gray.800"}
-            ></Box>
-          </Flex>
-          <Image
-            src="../favicon.ico"
-            alt="logo"
-            className="h-7 w-7"
-            display={["none", "none", "inline"]}
-          />
-          <Text
-            className="logoname text-xl"
-            display={["none", "none", "inline"]}
-          >
-            Inshorts Clone
-          </Text>
-        </Flex>
 
-        <Flex className="space-x-3">
-          <Text
-            className="CategoryHeading text-2xl font-semibold"
-            display={["none", "none", "inline"]}
-          >
-            All News
-          </Text>
-          <Image
-            src="../favicon.ico"
-            alt="logo"
-            className="h-7 w-7"
-            display={["inline", "inline", "none"]}
-          />
-          <Text
-            className="logoname text-xl"
-            display={["inline", "inline", "none"]}
-          >
-            Inshorts Clone
-          </Text>
-        </Flex>
-        <IconButton
-          borderRadius={"100%"}
-          onClick={toggleColorMode}
-          icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
+  toggleColorMode = (param) => {
+    this.setState({ colorMode: param });
+    console.log(this.state.colorMode);
+  };
+
+  render() {
+    return (
+      <Flex
+        width={["full"]}
+        flexDirection={"column"}
+        className="App"
+        backgroundColor={
+          this.state.colorMode === "dark" ? "gray.800" : "gray.100"
+        }
+      >
+        <HeadNav
+          colorMode={this.state.colorMode}
+          isNavOpen={this.state.isNavOpen}
+          toggleNavbar={this.toggleNavbar}
+          toggleColorMode={this.toggleColorMode}
         />
+        <Flex width={"full"} height={"full"}>
+          <Navbar
+            isnavopen={this.state.isNavOpen}
+            colorMode={this.state.colorMode}
+          />
+          <NewsSection colorMode={this.state.colorMode} />
+        </Flex>
       </Flex>
-      <Flex width={"full"} height={"full"}>
-        <Navbar isnavopen={isnavopen} colorMode={colorMode} />
-        <NewsSection colorMode={colorMode} />
-      </Flex>
-    </Flex>
-  );
+    );
+  }
 }
 
 export default App;

@@ -25,11 +25,24 @@ class NewsItem extends Component {
           className="info space-y-2 md:ml-2 mt-2 md:mt-0"
           direction={"column"}
         >
-          <Text className="title text-lg font-semibold">{title}</Text>
-          <Text className="authorandtime text-slate-500">
+          <Text
+            textColor={colorMode === "dark" ? "white" : "gray.900"}
+            className="title text-lg font-semibold"
+          >
+            {title}
+          </Text>
+          <Text
+            textColor={colorMode === "dark" ? "white" : "gray.900"}
+            className="authorandtime text-slate-500"
+          >
             By {author ? author : "Anonymous"} / {publishedAt}
           </Text>
-          <Text className="content">{description}</Text>
+          <Text
+            textColor={colorMode === "dark" ? "white" : "gray.900"}
+            className="content"
+          >
+            {description}
+          </Text>
           <Link target={"_blank"} color={"blue.600"} href={url}>
             read more at {sourceName ? sourceName : "author"}
           </Link>
