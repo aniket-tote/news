@@ -16,7 +16,7 @@ class NewsItem extends Component {
     } = this.props;
     return (
       <Flex
-        className="newsItem1 lg:w-[69%] h-max rounded-lg p-2 m-2 shadow-lg"
+        className="newsItem1 lg:w-[69%] h-max rounded-lg p-2 mt-2 ml-2 mr-2 shadow-lg"
         backgroundColor={colorMode === "dark" ? "gray.800" : "white"}
         direction={["column", "column", "row"]}
       >
@@ -31,10 +31,7 @@ class NewsItem extends Component {
           >
             {title}
           </Text>
-          <Text
-            textColor={colorMode === "dark" ? "white" : "gray.900"}
-            className="authorandtime text-slate-500"
-          >
+          <Text textColor={"gray.500"} className="authorandtime">
             By {author ? author : "Anonymous"} / {publishedAt}
           </Text>
           <Text

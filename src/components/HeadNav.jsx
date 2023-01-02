@@ -1,14 +1,11 @@
 import React from "react";
-import { Flex, IconButton, Box, Text, Image} from "@chakra-ui/react";
+import { Flex, IconButton, Box, Text, Image } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Component } from "react";
 
-
-
 class HeadNav extends Component {
- 
   render() {
-    let { isNavOpen,colorMode } = this.props;
+    let { isNavOpen, colorMode } = this.props;
 
     return (
       <Flex

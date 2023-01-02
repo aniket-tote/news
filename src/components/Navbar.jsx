@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Text } from "@chakra-ui/react";
+import { IconButton, Text } from "@chakra-ui/react";
+import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import { Flex, Box } from "@chakra-ui/react";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 class Navbar extends Component {
   constructor(props) {
@@ -21,8 +21,8 @@ class Navbar extends Component {
         flexDirection={"column"}
         className={
           isnavopen
-            ? "navbar space-y-4 pt-3 h-full md:right-0 md:relative right-auto absolute z-auto  transition-all duration-500 ease-in-out"
-            : "navbar h-full space-y-4 pt-3 absolute right-full md:relative md:right-0 transition-all duration-500 ease-in-out"
+            ? "navbar space-y-2 pt-3 h-full md:right-0 md:relative right-auto absolute z-auto transition-all duration-500 ease-in-out"
+            : "navbar h-full space-y-2 pt-3 absolute right-full md:relative md:right-0 transition-all duration-500 ease-in-out"
         }
         backgroundColor={colorMode === "dark" ? "gray.800" : "white"}
       >
@@ -61,18 +61,19 @@ class Navbar extends Component {
           >
             Categories
           </Text>
-          <Box
-            className="uparrow"
-            display={this.state.categoryIsOpen ? "none" : "inline"}
-          >
-            <IoIosArrowDown className="w-7 h-7" />
-          </Box>
-          <Box
-            className="downarrow"
-            display={this.state.categoryIsOpen ? "inline" : "none"}
-          >
-            <IoIosArrowUp className="w-7 h-7" />
-          </Box>
+          <IconButton
+            backgroundColor={colorMode === "dark" ? "gray.800" : "white"}
+            textColor={colorMode === "dark" ? "white" : "gray.800"}
+            borderRadius={"full"}
+            fontSize={"3xl"}
+            icon={
+              this.state.categoryIsOpen ? (
+                <ChevronUpIcon />
+              ) : (
+                <ChevronDownIcon />
+              )
+            }
+          />
         </Flex>
         <Box
           className="categories flex overflow-hidden"
@@ -85,10 +86,11 @@ class Navbar extends Component {
               backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
             }}
             padding={"0.5rem 1rem"}
-            className="category1 rounded mx-2"
+            className="category1 rounded mx-2 cursor-pointer"
+            onClick={() => this.props.toggleCategory("general")}
           >
             <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
-              All News
+              General
             </Text>
           </Flex>
           <Flex
@@ -97,31 +99,8 @@ class Navbar extends Component {
               backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
             }}
             padding={"0.5rem 1rem"}
-            className="category2 rounded mx-2"
-          >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
-              India
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent={"start"}
-            _hover={{
-              backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
-            }}
-            padding={"0.5rem 1rem"}
-            className="category3 rounded mx-2"
-          >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
-              Science
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent={"start"}
-            _hover={{
-              backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
-            }}
-            padding={"0.5rem 1rem"}
-            className="category4 rounded mx-2"
+            className="category2 rounded mx-2 cursor-pointer"
+            onClick={() => this.props.toggleCategory("technology")}
           >
             <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
               Technology
@@ -133,10 +112,11 @@ class Navbar extends Component {
               backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
             }}
             padding={"0.5rem 1rem"}
-            className="category5 rounded mx-2"
+            className="category3 rounded mx-2 cursor-pointer"
+            onClick={() => this.props.toggleCategory("science")}
           >
             <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
-              Start Up
+              Science
             </Text>
           </Flex>
           <Flex
@@ -145,7 +125,21 @@ class Navbar extends Component {
               backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
             }}
             padding={"0.5rem 1rem"}
-            className="category6 rounded mx-2"
+            className="category4 rounded mx-2 cursor-pointer"
+            onClick={() => this.props.toggleCategory("health")}
+          >
+            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
+              Health
+            </Text>
+          </Flex>
+          <Flex
+            justifyContent={"start"}
+            _hover={{
+              backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
+            }}
+            padding={"0.5rem 1rem"}
+            className="category5 rounded mx-2 cursor-pointer"
+            onClick={() => this.props.toggleCategory("business")}
           >
             <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
               Business
@@ -157,7 +151,8 @@ class Navbar extends Component {
               backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
             }}
             padding={"0.5rem 1rem"}
-            className="category7 rounded mx-2"
+            className="category6 rounded mx-2 cursor-pointer"
+            onClick={() => this.props.toggleCategory("sports")}
           >
             <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
               Sports
@@ -169,55 +164,8 @@ class Navbar extends Component {
               backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
             }}
             padding={"0.5rem 1rem"}
-            className="category8 rounded mx-2"
-          >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
-              World
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent={"start"}
-            _hover={{
-              backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
-            }}
-            padding={"0.5rem 1rem"}
-            className="category9 rounded mx-2"
-          >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
-              Miscellaneous
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent={"start"}
-            _hover={{
-              backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
-            }}
-            padding={"0.5rem 1rem"}
-            className="category1 rounded2 mx-2"
-          >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
-              Hatke
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent={"start"}
-            _hover={{
-              backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
-            }}
-            padding={"0.5rem 1rem"}
-            className="category1 rounded2 mx-2"
-          >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
-              Automobile
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent={"start"}
-            _hover={{
-              backgroundColor: colorMode === "dark" ? "gray.700" : "gray.200",
-            }}
-            padding={"0.5rem 1rem"}
-            className="category1 rounded2 mx-2"
+            className="category7 rounded mx-2 cursor-pointer"
+            onClick={() => this.props.toggleCategory("entertainment")}
           >
             <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
               Entertainment

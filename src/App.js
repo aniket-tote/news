@@ -11,6 +11,9 @@ class App extends Component {
     this.state = {
       colorMode: "dark",
       isNavOpen: false,
+      country: "in",
+      pageSize: "",
+      category: "general"
     };
   }
 
@@ -20,7 +23,10 @@ class App extends Component {
 
   toggleColorMode = (param) => {
     this.setState({ colorMode: param });
-    console.log(this.state.colorMode);
+  };
+
+  toggleCategory = (param) => {
+    this.setState({ category: param });
   };
 
   render() {
@@ -43,8 +49,15 @@ class App extends Component {
           <Navbar
             isnavopen={this.state.isNavOpen}
             colorMode={this.state.colorMode}
+            category={this.state.category}
+            toggleCategory={this.toggleCategory}
           />
-          <NewsSection colorMode={this.state.colorMode} />
+          <NewsSection
+            colorMode={this.state.colorMode}
+            category={this.state.category}
+            country={this.state.country}
+            pageSize={this.state.pageSize}
+          />
         </Flex>
       </Flex>
     );
