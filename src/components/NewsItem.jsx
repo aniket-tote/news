@@ -3,6 +3,10 @@ import React from "react";
 import { Component } from "react";
 
 class NewsItem extends Component {
+  static defaultProps = {
+    urlToImage : "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png"
+  }
+
   render() {
     let {
       colorMode,
@@ -32,7 +36,7 @@ class NewsItem extends Component {
             {title}
           </Text>
           <Text textColor={"gray.500"} className="authorandtime">
-            By {author ? author : "Anonymous"} / {publishedAt}
+            By {author ? author : "Anonymous"} / { new Date(publishedAt).toGMTString()}
           </Text>
           <Text
             textColor={colorMode === "dark" ? "white" : "gray.900"}

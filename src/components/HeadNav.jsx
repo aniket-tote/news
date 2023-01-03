@@ -72,7 +72,7 @@ class HeadNav extends Component {
             display={["none", "none", "inline"]}
             textColor={colorMode === "dark" ? "white" : "gray.900"}
           >
-            Inshorts Clone
+            NewsHub
           </Text>
         </Flex>
 
@@ -82,7 +82,9 @@ class HeadNav extends Component {
             display={["none", "none", "inline"]}
             textColor={colorMode === "dark" ? "white" : "gray.900"}
           >
-            All News
+            {String(this.props.category).substring(0, 1).toUpperCase() +
+              "" +
+              String(this.props.category).substring(1)}
           </Text>
           <Image
             src="../favicon.ico"
@@ -95,7 +97,7 @@ class HeadNav extends Component {
             display={["inline", "inline", "none"]}
             textColor={colorMode === "dark" ? "white" : "gray.900"}
           >
-            Inshorts Clone
+            NewsHub
           </Text>
         </Flex>
         <IconButton

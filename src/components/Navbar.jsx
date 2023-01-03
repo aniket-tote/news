@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { IconButton, Text } from "@chakra-ui/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import { Flex, Box } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       categoryIsOpen: true,
-      language: false,
     };
   }
 
@@ -21,7 +21,7 @@ class Navbar extends Component {
         flexDirection={"column"}
         className={
           isnavopen
-            ? "navbar space-y-2 pt-3 h-full md:right-0 md:relative right-auto absolute z-auto transition-all duration-500 ease-in-out"
+            ? "navbar space-y-2 pt-3 h-full md:right-0 md:relative right-auto absolute transition-all duration-500 ease-in-out"
             : "navbar h-full space-y-2 pt-3 absolute right-full md:relative md:right-0 transition-all duration-500 ease-in-out"
         }
         backgroundColor={colorMode === "dark" ? "gray.800" : "white"}
@@ -30,22 +30,25 @@ class Navbar extends Component {
           <Flex
             className="languageToggle rounded-md p-1 z-0 w-[8.5rem]"
             backgroundColor={colorMode === "dark" ? "gray.700" : "gray.200"}
-            onClick={() => this.setState({ language: !this.state.language })}
+            onClick={() =>
+              this.props.toggleCountry(this.props.country === "in" ? "" : "in")
+            }
           >
             <Box className="english px-2 py-1 rounded cursor-pointer">
               <Text textColor={colorMode === "dark" ? "white" : "gray.800"}>
-                English
+                All world
               </Text>
             </Box>
             <Box className="hindi px-2 py-1 hover:cursor-pointer">
               <Text textColor={colorMode === "dark" ? "white" : "gray.800"}>
-                Hindi
+                India
               </Text>
             </Box>
             <Box
-              className="background absolute w-16 h-8 rounded z-[-1]"
+              className="background absolute h-8 rounded z-[-1]"
+              width={this.props.country === "in" ? "3rem" : "4.8rem"}
               backgroundColor={colorMode === "dark" ? "gray.600" : "gray.300"}
-              marginLeft={this.state.language ? "4rem" : "0rem"}
+              marginLeft={this.props.country ? "5rem" : "0rem"}
             ></Box>
           </Flex>
         </Flex>
@@ -89,9 +92,12 @@ class Navbar extends Component {
             className="category1 rounded mx-2 cursor-pointer"
             onClick={() => this.props.toggleCategory("general")}
           >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
+            <Link
+              to="/"
+              className={colorMode === "dark" ? "text-white" : "text-gray-900"}
+            >
               General
-            </Text>
+            </Link>
           </Flex>
           <Flex
             justifyContent={"start"}
@@ -102,9 +108,12 @@ class Navbar extends Component {
             className="category2 rounded mx-2 cursor-pointer"
             onClick={() => this.props.toggleCategory("technology")}
           >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
+            <Link
+              to="/technology"
+              className={colorMode === "dark" ? "text-white" : "text-gray-900"}
+            >
               Technology
-            </Text>
+            </Link>
           </Flex>
           <Flex
             justifyContent={"start"}
@@ -115,9 +124,12 @@ class Navbar extends Component {
             className="category3 rounded mx-2 cursor-pointer"
             onClick={() => this.props.toggleCategory("science")}
           >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
+            <Link
+              to="/science"
+              className={colorMode === "dark" ? "text-white" : "text-gray-900"}
+            >
               Science
-            </Text>
+            </Link>
           </Flex>
           <Flex
             justifyContent={"start"}
@@ -128,9 +140,12 @@ class Navbar extends Component {
             className="category4 rounded mx-2 cursor-pointer"
             onClick={() => this.props.toggleCategory("health")}
           >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
+            <Link
+              to="/health"
+              className={colorMode === "dark" ? "text-white" : "text-gray-900"}
+            >
               Health
-            </Text>
+            </Link>
           </Flex>
           <Flex
             justifyContent={"start"}
@@ -141,9 +156,12 @@ class Navbar extends Component {
             className="category5 rounded mx-2 cursor-pointer"
             onClick={() => this.props.toggleCategory("business")}
           >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
+            <Link
+              to="/business"
+              className={colorMode === "dark" ? "text-white" : "text-gray-900"}
+            >
               Business
-            </Text>
+            </Link>
           </Flex>
           <Flex
             justifyContent={"start"}
@@ -154,9 +172,12 @@ class Navbar extends Component {
             className="category6 rounded mx-2 cursor-pointer"
             onClick={() => this.props.toggleCategory("sports")}
           >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
+            <Link
+              to="/sports"
+              className={colorMode === "dark" ? "text-white" : "text-gray-900"}
+            >
               Sports
-            </Text>
+            </Link>
           </Flex>
           <Flex
             justifyContent={"start"}
@@ -167,9 +188,12 @@ class Navbar extends Component {
             className="category7 rounded mx-2 cursor-pointer"
             onClick={() => this.props.toggleCategory("entertainment")}
           >
-            <Text textColor={colorMode === "dark" ? "white" : "gray.900"}>
+            <Link
+              to="/entertainment"
+              className={colorMode === "dark" ? "text-white" : "text-gray-900"}
+            >
               Entertainment
-            </Text>
+            </Link>
           </Flex>
         </Box>
       </Flex>

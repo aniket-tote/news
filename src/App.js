@@ -4,6 +4,7 @@ import NewsSection from "./components/NewsSection";
 import { Flex } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import HeadNav from "./components/HeadNav";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -12,9 +13,10 @@ class App extends Component {
       colorMode: "dark",
       isNavOpen: false,
       country: "in",
-      pageSize: "",
-      category: "general"
+      category: "general",
     };
+
+    this.toggleCountry = this.toggleCountry.bind(this);
   }
 
   toggleNavbar = (param) => {
@@ -27,6 +29,10 @@ class App extends Component {
 
   toggleCategory = (param) => {
     this.setState({ category: param });
+  };
+
+  toggleCountry = (param) => {
+    this.setState({ country: param });
   };
 
   render() {
@@ -43,21 +49,106 @@ class App extends Component {
           colorMode={this.state.colorMode}
           isNavOpen={this.state.isNavOpen}
           toggleNavbar={this.toggleNavbar}
+          category={this.state.category}
           toggleColorMode={this.toggleColorMode}
         />
         <Flex width={"full"} height={"full"}>
-          <Navbar
-            isnavopen={this.state.isNavOpen}
-            colorMode={this.state.colorMode}
-            category={this.state.category}
-            toggleCategory={this.toggleCategory}
-          />
-          <NewsSection
-            colorMode={this.state.colorMode}
-            category={this.state.category}
-            country={this.state.country}
-            pageSize={this.state.pageSize}
-          />
+          <Router>
+            <Navbar
+              isnavopen={this.state.isNavOpen}
+              colorMode={this.state.colorMode}
+              category={this.state.category}
+              toggleCategory={this.toggleCategory}
+              country={this.state.country}
+              toggleCountry={this.toggleCountry}
+            />
+            <Routes>
+              <Route
+                exact
+                path="/"
+                element={
+                  <NewsSection
+                    key={"general"}
+                    colorMode={this.state.colorMode}
+                    category={"general"}
+                    country={this.state.country}
+                  />
+                }
+              ></Route>
+              <Route
+                exact
+                path="/technology"
+                element={
+                  <NewsSection
+                    key={"technology"}
+                    colorMode={this.state.colorMode}
+                    category={"technology"}
+                    country={this.state.country}
+                  />
+                }
+              ></Route>
+              <Route
+                exact
+                path="/science"
+                element={
+                  <NewsSection
+                    key={"science"}
+                    colorMode={this.state.colorMode}
+                    category={"science"}
+                    country={this.state.country}
+                  />
+                }
+              ></Route>
+              <Route
+                exact
+                path="/health"
+                element={
+                  <NewsSection
+                    key={"health"}
+                    colorMode={this.state.colorMode}
+                    category={"health"}
+                    country={this.state.country}
+                  />
+                }
+              ></Route>
+              <Route
+                exact
+                path="/business"
+                element={
+                  <NewsSection
+                    key={"business"}
+                    colorMode={this.state.colorMode}
+                    category={"business"}
+                    country={this.state.country}
+                  />
+                }
+              ></Route>
+              <Route
+                exact
+                path="/sports"
+                element={
+                  <NewsSection
+                    key={"sports"}
+                    colorMode={this.state.colorMode}
+                    category={"sports"}
+                    country={this.state.country}
+                  />
+                }
+              ></Route>
+              <Route
+                exact
+                path="/entertainment"
+                element={
+                  <NewsSection
+                    key={"entertainment"}
+                    colorMode={this.state.colorMode}
+                    category={"entertainment"}
+                    country={this.state.country}
+                  />
+                }
+              ></Route>
+            </Routes>
+          </Router>
         </Flex>
       </Flex>
     );
