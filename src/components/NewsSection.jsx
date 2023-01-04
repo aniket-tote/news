@@ -6,11 +6,12 @@ import { Component } from "react";
 import Loading from "./Loading";
 
 class NewsSection extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       articles: this.articles,
       loading: false,
+      country:this.props.country,
       page: 1,
       totalResults: this.totalResults,
     };
@@ -33,6 +34,7 @@ class NewsSection extends Component {
   async componentDidMount() {
     this.updateNews();
   }
+
 
   handlePrevious = async () => {
     this.setState({
