@@ -12,7 +12,6 @@ class App extends Component {
     this.state = {
       colorMode: "dark",
       isNavOpen: false,
-      country: "in",
       category: "general",
     };
 
