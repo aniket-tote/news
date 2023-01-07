@@ -14,6 +14,7 @@ class HeadNav extends Component {
         justifyContent={"space-between"}
         alignItems={"center"}
         padding={"0rem 1rem"}
+        position={"fixed"}
         backgroundColor={colorMode === "dark" ? "gray.800" : "white"}
       >
         <Flex

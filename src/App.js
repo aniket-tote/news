@@ -5,6 +5,7 @@ import { Flex } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import HeadNav from "./components/HeadNav";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoadingBar from "react-top-loading-bar";
 
 class App extends Component {
   constructor(props) {
@@ -14,9 +15,13 @@ class App extends Component {
       isNavOpen: false,
       country: "in",
       category: "general",
+      progress: 0,
     };
-
   }
+
+  setProgress = (progress) => {
+    this.setState({ progress: progress });
+  };
 
   toggleNavbar = (param) => {
     this.setState({ isNavOpen: param });
@@ -44,6 +49,7 @@ class App extends Component {
           this.state.colorMode === "dark" ? "gray.800" : "gray.100"
         }
       >
+        <LoadingBar color="#f11946" progress={this.state.progress} />
         <HeadNav
           colorMode={this.state.colorMode}
           isNavOpen={this.state.isNavOpen}
@@ -51,7 +57,8 @@ class App extends Component {
           category={this.state.category}
           toggleColorMode={this.toggleColorMode}
         />
-        <Flex width={"full"} height={"full"}>
+
+        <Flex width={"full"} height={"full"} marginTop={"4rem"}>
           <Router>
             <Navbar
               isnavopen={this.state.isNavOpen}
@@ -67,6 +74,7 @@ class App extends Component {
                 path="/"
                 element={
                   <NewsSection
+                    setProgress={this.setProgress}
                     key={"general"}
                     colorMode={this.state.colorMode}
                     category={"general"}
@@ -79,6 +87,7 @@ class App extends Component {
                 path="/technology"
                 element={
                   <NewsSection
+                    setProgress={this.setProgress}
                     key={"technology"}
                     colorMode={this.state.colorMode}
                     category={"technology"}
@@ -91,6 +100,7 @@ class App extends Component {
                 path="/science"
                 element={
                   <NewsSection
+                    setProgress={this.setProgress}
                     key={"science"}
                     colorMode={this.state.colorMode}
                     category={"science"}
@@ -103,6 +113,7 @@ class App extends Component {
                 path="/health"
                 element={
                   <NewsSection
+                    setProgress={this.setProgress}
                     key={"health"}
                     colorMode={this.state.colorMode}
                     category={"health"}
@@ -115,6 +126,7 @@ class App extends Component {
                 path="/business"
                 element={
                   <NewsSection
+                    setProgress={this.setProgress}
                     key={"business"}
                     colorMode={this.state.colorMode}
                     category={"business"}
@@ -127,6 +139,7 @@ class App extends Component {
                 path="/sports"
                 element={
                   <NewsSection
+                    setProgress={this.setProgress}
                     key={"sports"}
                     colorMode={this.state.colorMode}
                     category={"sports"}
@@ -139,6 +152,7 @@ class App extends Component {
                 path="/entertainment"
                 element={
                   <NewsSection
+                    setProgress={this.setProgress}
                     key={"entertainment"}
                     colorMode={this.state.colorMode}
                     category={"entertainment"}

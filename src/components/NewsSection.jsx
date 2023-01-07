@@ -1,127 +1,95 @@
-import React from "react";
-import { Button, Flex } from "@chakra-ui/react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import React, { useState, useEffect } from "react";
+import { Flex } from "@chakra-ui/react";
 import NewsItem from "./NewsItem";
-import { Component } from "react";
 import Loading from "./Loading";
+import InfiniteScroll from "react-infinite-scroll-component";
 
-class NewsSection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: this.articles,
-      loading: false,
-      country:this.props.country,
-      page: 1,
-      totalResults: this.totalResults,
-    };
-  }
+const NewsSection = (props) => {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  // const [country, setCountry] = useState("in");
+  const [page, setPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
 
-  async updateNews() {
-    const url = `https://newsapi.org/v2/top-headlines?language=en&pageSize=20&country=${this.props.country}&apiKey=9beb73b8c5354e63ac440efa04f1415e&category=${this.props.category}&page=${this.state.page}`;
-    this.setState({
-      loading: true,
-    });
+  const updateNews = async () => {
+    props.setProgress(0);
+    const url = `https://newsapi.org/v2/top-headlines?language=en&pageSize=20&country=${props.country}&apiKey=9beb73b8c5354e63ac440efa04f1415e&category=${props.category}&page=${page}`;
+    let fetcheddata = await fetch(url);
+    props.setProgress(30);
+    let data = await fetcheddata.json();
+    props.setProgress(50);
+    setArticles(data.articles);
+    setLoading(false);
+    setTotalResults(data.totalResults);
+    props.setProgress(100);
+  };
+
+  useEffect(() => {
+    updateNews();
+    // eslint-disable-next-line
+  }, []);
+
+  const fetchMoreData = async () => {
+    props.setProgress(0);
+    const url = `https://newsapi.org/v2/top-headlines?language=en&pageSize=20&country=${
+      props.country
+    }&apiKey=9beb73b8c5354e63ac440efa04f1415e&category=${props.category}&page=${
+      page + 1
+    }`;
+    setPage(page + 1);
     let fetcheddata = await fetch(url);
     let data = await fetcheddata.json();
-    this.setState({
-      articles: data.articles,
-      loading: false,
-      totalResults: data.totalResults,
-    });
-  }
-
-  async componentDidMount() {
-    this.updateNews();
-  }
-
-
-  handlePrevious = async () => {
-    this.setState({
-      page: this.state.page - 1,
-    });
-    this.updateNews();
+    setArticles(articles.concat(data.articles));
+    setTotalResults(data.totalResults);
+    props.setProgress(100);
   };
 
-  handleNext = async () => {
-    this.setState({
-      page: this.state.page + 1,
-    });
-    this.updateNews();
-  };
-
-  render() {
-    let { colorMode } = this.props;
-    return (
+  return (
+    <Flex
+      width={["100%", "100%", "85%"]}
+      flexDirection={"column"}
+      minHeight={"100vh"}
+      alignItems={"center"}
+      backgroundColor={props.colorMode === "dark" ? "gray.900" : "gray.100"}
+    >
+      {loading && <Loading />}
       <Flex
-        width={["100%", "100%", "85%"]}
-        flexDirection={"column"}
-        minHeight={"100vh"}
-        alignItems={"center"}
-        backgroundColor={colorMode === "dark" ? "gray.900" : "gray.100"}
+        className="newsContainer"
+        flexWrap={"wrap"}
+        width={"full"}
+        justifyContent={"center"}
       >
-        {this.state.loading && <Loading />}
-        <Flex
-          className="newsContainer"
-          flexWrap={"wrap"}
-          width={"full"}
-          justifyContent={"center"}
+        <InfiniteScroll
+          dataLength={articles.length}
+          next={fetchMoreData}
+          hasMore={articles.length !== totalResults}
+          loader={<Loading />}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "100%",
+          }}
         >
-          {!this.state.loading &&
-            (this.state.articles
-              ? this.state.articles.map((element) => {
-                  return (
-                    <NewsItem
-                      colorMode={this.props.colorMode}
-                      key={element.url}
-                      title={element.title}
-                      description={element.description}
-                      author={element.author}
-                      publishedAt={element.publishedAt}
-                      url={element.url}
-                      urlToImage={element.urlToImage}
-                      sourceName={element.source.name}
-                    />
-                  );
-                })
-              : console.log("articles not found"))}
-        </Flex>
-        <Flex
-          position={["relative", "relative", "absolute"]}
-          justifyContent={"space-between"}
-          width={["100%", "85%"]}
-          padding={"5"}
-        >
-          <Button
-            disabled={this.state.page <= 1}
-            className="px-4 py-2 rounded disabled:text-gray-600"
-            background={"transparent  "}
-            _hover={{
-              backgroundColor: colorMode === "dark" ? "gray.700" : "gray.300",
-            }}
-            textColor={colorMode === "dark" ? "white" : "gray.800"}
-            onClick={this.handlePrevious}
-          >
-            <ChevronLeftIcon /> Previous
-          </Button>
-          <Button
-            disabled={
-              this.state.page >= Math.ceil(this.state.totalResults / 20)
-            }
-            className="px-4 py-2 rounded disabled:text-gray-600"
-            background={"transparent"}
-            _hover={{
-              backgroundColor: colorMode === "dark" ? "gray.700" : "gray.300",
-            }}
-            textColor={colorMode === "dark" ? "white" : "gray.800"}
-            onClick={this.handleNext}
-          >
-            Next <ChevronRightIcon />
-          </Button>
-        </Flex>
+          {articles.map((element) => {
+            return (
+              <NewsItem
+                colorMode={props.colorMode}
+                key={element.url}
+                title={element.title}
+                description={element.description}
+                author={element.author}
+                publishedAt={element.publishedAt}
+                url={element.url}
+                urlToImage={element.urlToImage}
+                sourceName={element.source.name}
+              />
+            );
+          })}
+        </InfiniteScroll>
       </Flex>
-    );
-  }
-}
+    </Flex>
+  );
+};
 
 export default NewsSection;
