@@ -3,10 +3,6 @@ import React from "react";
 import { Component } from "react";
 
 class NewsItem extends Component {
-  static defaultProps = {
-    urlToImage : "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png"
-  }
-
   render() {
     let {
       colorMode,
@@ -24,7 +20,14 @@ class NewsItem extends Component {
         backgroundColor={colorMode === "dark" ? "gray.800" : "white"}
         direction={["column", "column", "row"]}
       >
-        <Image src={urlToImage} className="h-56 rounded" />
+        <Image
+          src={
+            urlToImage
+              ? urlToImage
+              : "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png"
+          }
+          className="h-56 rounded"
+        />
         <Flex
           className="info space-y-2 md:ml-2 mt-2 md:mt-0"
           direction={"column"}
@@ -36,7 +39,8 @@ class NewsItem extends Component {
             {title}
           </Text>
           <Text textColor={"gray.500"} className="authorandtime">
-            By {author ? author : "Anonymous"} / { new Date(publishedAt).toGMTString()}
+            By {author ? author : "Anonymous"} /{" "}
+            {new Date(publishedAt).toGMTString()}
           </Text>
           <Text
             textColor={colorMode === "dark" ? "white" : "gray.900"}
