@@ -31,7 +31,7 @@ class NewsSection extends Component {
   }
 
   async componentDidMount() {
-    this.updateNews();
+    // this.updateNews();
   }
 
   handlePrevious = async () => {
